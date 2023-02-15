@@ -35,6 +35,7 @@ const Cardgacha = (props) => {
             alert("Selamat Anda mendapatkan Pokemon Card")
             dispatch(addCard(pokeapi[randomPoke]))
         } else{
+            alert("Coba Lagi")
             setFailed('Coba Lagi')
         }
     }
