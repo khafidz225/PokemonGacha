@@ -24,8 +24,8 @@ const Cardgacha = (props) => {
         return () => clearTimeout(timer)
     }, [countdown, buttonDisable])
     const handleClick = () => {
-        // setButtonDisable(true)
-        // setCountdown(10)
+        setButtonDisable(true)
+        setCountdown(10)
         const randomCard = Math.random() >= 0.5 ? 'yes' : 'no';
         setStatus(randomCard)
         if(randomCard === 'yes') {
