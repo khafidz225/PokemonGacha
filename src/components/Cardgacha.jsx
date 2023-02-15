@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { addCard } from '../features/CardSlice'
 
 const Cardgacha = (props) => {
@@ -9,15 +9,9 @@ const Cardgacha = (props) => {
     const [success, setSuccess] = useState(null)
     const [status, setStatus] = useState(null)
     const [typespoke, setTypespoke] = useState('')
-
-    const {cardList} = useSelector(state => state.counter)
-    console.log(cardList)
     const dispatch = useDispatch()
 
     const pokeapi = props?.pokeapi.data
-
-    console.log('button' + buttonDisable)
-    console.log('couldown' + countdown)
 
     useEffect(() => {
       const timer = setTimeout(() => {
@@ -29,7 +23,6 @@ const Cardgacha = (props) => {
       }, 1000);
         return () => clearTimeout(timer)
     }, [countdown, buttonDisable])
-    // console.log(pokeapi)
     const handleClick = () => {
         // setButtonDisable(true)
         // setCountdown(10)
@@ -45,8 +38,6 @@ const Cardgacha = (props) => {
             setFailed('Coba Lagi')
         }
     }
-    console.log(success)
-    console.log(status)
     
     const styleCard = `border mt-5 w-[85%] md:w-[350px] m-auto rounded ${typespoke === 'grass' ? 'bg-green-100' : 
                 typespoke === 'fire' ? 'bg-red-100' : 
@@ -95,7 +86,7 @@ const Cardgacha = (props) => {
             </div>
             <div className='justify-center flex mt-5'>
                 <button onClick={() => handleClick()} disabled={buttonDisable} className='rounded p-2 text-center m-auto w-[200px] text-[18px] bg-gradient-to-r bg-sky-300 hover:bg-sky-500 hover:text-white ease-in duration-300'>
-                    {buttonDisable == true ? `Wait ${countdown} seconds`: 'Go To Gacha'}
+                    {buttonDisable === true ? `Wait ${countdown} seconds`: 'Go To Gacha'}
                 </button>
             </div>
         </div>
